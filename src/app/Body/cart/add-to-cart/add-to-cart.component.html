@@ -1,0 +1,19 @@
+
+<div class="p-md-3">
+    <div *ngIf="getArray.length > 0">
+        <div *ngFor="let foodItem of getArray" >
+            <div *ngIf="foodItem.quantity > 0" class="d-flex justify-content-between border-bottom my-3">
+                <div>
+                    <h5>{{ foodItem.foodName }}</h5>
+                    <h6>{{ foodItem.price }} * {{ foodItem.quantity }}</h6>
+                </div>
+                <div class="my-auto">
+                    <h6>Total :{{ foodItem.price * foodItem.quantity }}</h6>
+                </div>
+            </div>  
+        </div> 
+        <div>
+            <h4>Total-Bill:{{ calculateTotal() }}</h4>
+        </div>
+    </div>
+</div>

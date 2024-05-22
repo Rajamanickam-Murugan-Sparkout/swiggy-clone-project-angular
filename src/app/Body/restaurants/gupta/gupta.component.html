@@ -1,0 +1,61 @@
+<main class="container px-xs-5">
+    <div class="mt-4">
+        <h3 class="fw-bold">Gupta Sweets</h3>
+        <div class="px-4 py-2">
+            <div class="h6">⭐<small class="ps-1">4.5</small></div>
+            <p class="text-black-50">Blossom Plaza, Omalur Main Rd, near Little Flower School, Arisipalayam, Salem</p>
+        </div>
+    </div>
+
+    <hr class="mb-sm-4 mb-sm-2">
+    
+    <div class="col d-sm-flex pb-4">
+        <p class="h4 me-5 fw-bold">Items at 179</p>
+        <div class="d-flex">
+            <div class="me-2 text-success">Veg</div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox">
+            </div>
+            <div class="text-danger">Non-Veg</div>
+        </div>
+    </div>
+        
+    <div class="d-md-flex w-100">
+        <div class="w-100 p-md-3">
+            <h2 class="mb-lg-3">Food Items</h2>
+            <div class="row p-2" *ngFor="let food of foodLists; let i = index;" >
+                <div class="d-flex flex-column col-8 w-md-50">
+                    <div class="h6 fs-6">{{food.foodName}}</div>
+                    <div><small class="text-decoration-line-through pe-2 custom-size">{{food.throughoutPrice | currency: 'INR':'symbol':'3.0' }}</small>{{food.price | currency: 'INR':'symbol':'3.0' }}</div>
+                    <div class="h6 fs-6 custom-size">⭐<small class="ps-1">{{food.starRating}}</small></div>
+                    <p class="text-black-50 custom-size">{{food.foodDescription}}</p>
+                </div>
+    
+                <div class="text-end mx-xs-2 col-4">
+                    <div>
+                        <img [src]='foodImageUrl' alt="item-image" class="w-100 rounded rouned-5" style="height: 6rem;">
+                    </div>
+                    <div *ngIf="food.quantity === 0; else addBtn" class="d-flex bg-white justify-content-center inc-dec-btn">
+                        <div class="w-75 fw-bold btn btn-outline-success" (click)="addItem(i); giveDataToChild(i)">ADD</div>
+                    </div>
+                    <ng-template #addBtn >
+                        <div class="d-flex justify-content-center">
+                            <div class="w-75 d-flex justify-content-between border border-success rounded">
+                                <button class="border border-0 dec-btn fw-bold bg-transparent ms-xs-1 ps-md-4 text-success" (click)="decItem(i)">-</button>
+                                <div class="fs-4 inc-dec-val counter text-success hidden">{{food.quantity}}</div>
+                                <button class="border border-0 inc-btn fw-bold bg-transparent me-xs-1 pe-md-4 text-success" (click)="addItem(i)">+</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+                <hr class="my-3">
+            </div>
+        </div>
+
+        <div class="w-75 p-md-3">
+            <h2>Add to Cart</h2>
+            <app-add-to-cart [getArray]="pushArray"></app-add-to-cart>
+        </div>
+    </div> 
+
+</main>
