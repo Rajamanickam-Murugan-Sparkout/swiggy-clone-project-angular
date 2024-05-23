@@ -12,6 +12,7 @@ import { GuptaComponent } from './Body/restaurants/gupta/gupta.component';
 import { AddToCartComponent } from './Body/cart/add-to-cart/add-to-cart.component';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
